@@ -1217,8 +1217,12 @@
     el.innerHTML = "";
     achList = achList || [];
 
-    if (!result || !result.people || result.people.length === 0) {
+    if (!result) {
       el.innerHTML = '<div class="state-msg error"><span class="cup">🙈</span>Impossible de lire le classement pour le moment.<br>La structure du Google Sheet a peut-être changé.</div>';
+      return;
+    }
+    if (!result.people || result.people.length === 0) {
+      el.innerHTML = '<div class="state-msg"><span class="cup">🌱</span>Personne n\'a encore de close ce mois-ci.<br>Premier close, premier badge !</div>';
       return;
     }
 
